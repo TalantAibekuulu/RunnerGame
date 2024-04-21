@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public string name;
-    public bool isFinished;
+    
     [SerializeField] private float speed;
-    private bool isJamping;
+   
     private void Update()
     {
         Run();
-        bool isSpaceClicked = Input.GetKeyUp(KeyCode.Space);
-
-        if (isSpaceClicked == true)
+        if(Input.GetKeyDown(KeyCode.D)==true)
+        {
+            transform.position = GetSidePosition(1);
+        }
+          else if(Input.GetKey(KeyCode.A)==true)
+        {
+            transform.position = GetSidePosition(-1);
+        }
+       
+        if (CanBoost()==true)
         {
             Boost(2);
         }
@@ -22,10 +28,7 @@ public class Character : MonoBehaviour
     {
         speed = speed * miltiplier;
     }
-    private void Jump()
-    {
-        isJamping = true;
-    }
+    
     private void Run()
     {
         transform.position = GetNextPosition(speed);
@@ -37,23 +40,24 @@ public class Character : MonoBehaviour
         newPosition.y = transform.position.y;
         newPosition.z = transform.position.z + steplenth;
 
-        transform.position = newPosition;
+       
         return newPosition;
     }
-    private int GetSum(int firstNumber, int secondNumber)
+    private bool CanBoost()
     {
-        int sum = 0;
-        sum += firstNumber + secondNumber;
-        return sum;
+        return Input.GetKeyUp(KeyCode.Space);
+    }
+    private Vector3 GetSidePosition(int sideDirecton)
+    {
+        Vector3 newPosition=new Vector3();
+        newPosition.x=transform.position.x + sideDirecton;
+        newPosition.y=transform.position.y;
+    newPosition.z=transform.position.z;
+   
+        return newPosition;
+    
     }
 
-
-    private float ЖарымынБер(int number)
-    {
-        float result = 0;
-        result += number / 2;
-        return result;
-    }
 
 }
 
