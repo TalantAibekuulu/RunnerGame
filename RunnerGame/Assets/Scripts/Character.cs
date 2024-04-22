@@ -1,16 +1,25 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Character : MonoBehaviour
 {
+    public string Name;
+    public bool isFinished;
 
-    [SerializeField] private float speed;
+    [SerializeField] private float forwardSpeed;
 
+    [SerializeField] private float sideSpeed;
+
+    private bool isJjumping;
 
     private void Update()
     {
+       Scale();
+       
         Run();
 
-        if (Input.GetKeyDown(KeyCode.D) == true)
+        if (Input.GetKey(KeyCode.D) == true)
         {
             transform.position = GetSidePosition(1);
         }
@@ -19,46 +28,92 @@ public class Character : MonoBehaviour
             transform.position = GetSidePosition(-1);
         }
 
-        if (CanBoost() == true)
+        bool isSpaceCicked = Input.GetKeyUp(KeyCode.Space);
+
+        if (isSpaceCicked == true)
         {
             Boost(2);
         }
-
     }
 
-    public void Boost(float miltiplier)
+    private void Boost(float multiplier)
     {
-        speed = speed * miltiplier;
+        forwardSpeed = forwardSpeed * multiplier;
+    }
+
+    private void Jump()
+    {
+        isJjumping = true;
     }
 
     private void Run()
     {
-        transform.position = GetNextPosition(speed);
+        transform.position = GetNextPosition(forwardSpeed);
     }
-    private Vector3 GetNextPosition(float steplenth)
+    private Vector3 GetNextPosition(float stepLenth)
     {
-        Vector3 newPosition = new Vector3();
-        newPosition.x = transform.position.x;
-        newPosition.y = transform.position.y;
-        newPosition.z = transform.position.z + steplenth;
+        Vector3 nemPosition = new Vector3();
+        nemPosition.x = transform.position.x;
+        nemPosition.y = transform.position.y;
+        nemPosition.z = transform.position.z + stepLenth;
 
-
-        return newPosition;
+        return nemPosition;
     }
+
+    private int GetSum(int firstNumber, int secondNumber)
+    {
+        int sum = 0;
+
+        sum = firstNumber + secondNumber;
+
+        return sum;
+    }
+
+    private float ЖарымынБер(int number)
+
+    {
+        float sum = 5;
+
+        sum = number / 2;
+
+
+        return sum;
+    }
+
     private bool CanBoost()
     {
         return Input.GetKeyUp(KeyCode.Space);
     }
-    private Vector3 GetSidePosition(int sideDirecton)
+
+    private Vector3 GetSidePosition(int sideDirection)
     {
-        Vector3 newPosition = new Vector3();
-        newPosition.x = transform.position.x + sideDirecton;
-        newPosition.y = transform.position.y;
-        newPosition.z = transform.position.z;
+        Vector3 nemPosition = new Vector3();
+        nemPosition.x = transform.position.x + sideDirection * sideSpeed;
+        nemPosition.y = transform.position.y;
+        nemPosition.z = transform.position.z;
 
-        return newPosition;
-
+        return nemPosition;
     }
+    private void Scale()
+    {
+       
+   
+        
+        if(Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            transform.DOScale(Vector3.one*1, 1f);
+        }
+    else if(Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            transform.DOScale(Vector3.one*2, 1f);
+        }
+   
+    else if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            transform.DOScale(Vector3.one*3, 1f);
+        }
+            
+     }
 
 
 }
