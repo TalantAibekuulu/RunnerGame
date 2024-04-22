@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    
+
     [SerializeField] private float speed;
-   
+
+
     private void Update()
     {
         Run();
-        if(Input.GetKeyDown(KeyCode.D)==true)
+
+        if (Input.GetKeyDown(KeyCode.D) == true)
         {
             transform.position = GetSidePosition(1);
         }
-          else if(Input.GetKey(KeyCode.A)==true)
+        else if (Input.GetKey(KeyCode.A) == true)
         {
             transform.position = GetSidePosition(-1);
         }
-       
-        if (CanBoost()==true)
+
+        if (CanBoost() == true)
         {
             Boost(2);
         }
@@ -28,7 +30,7 @@ public class Character : MonoBehaviour
     {
         speed = speed * miltiplier;
     }
-    
+
     private void Run()
     {
         transform.position = GetNextPosition(speed);
@@ -40,7 +42,7 @@ public class Character : MonoBehaviour
         newPosition.y = transform.position.y;
         newPosition.z = transform.position.z + steplenth;
 
-       
+
         return newPosition;
     }
     private bool CanBoost()
@@ -49,13 +51,13 @@ public class Character : MonoBehaviour
     }
     private Vector3 GetSidePosition(int sideDirecton)
     {
-        Vector3 newPosition=new Vector3();
-        newPosition.x=transform.position.x + sideDirecton;
-        newPosition.y=transform.position.y;
-    newPosition.z=transform.position.z;
-   
+        Vector3 newPosition = new Vector3();
+        newPosition.x = transform.position.x + sideDirecton;
+        newPosition.y = transform.position.y;
+        newPosition.z = transform.position.z;
+
         return newPosition;
-    
+
     }
 
 
