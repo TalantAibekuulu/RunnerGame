@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColiderTest : MonoBehaviour
@@ -8,7 +6,7 @@ public class ColiderTest : MonoBehaviour
     {
         Debug.Log("Entered:"+other.gameObject.name);
     }
-    private void OnTriggerExited(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         Debug.Log("Exited:" + other.gameObject.name);
     }
