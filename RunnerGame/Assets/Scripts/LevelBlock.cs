@@ -8,6 +8,21 @@ public class LevelBlock : MonoBehaviour
     public Transform endPosition;
 
     public LevelBlock[] LevelBlockPrefab;
-   
+
+    public EndPositionColiderSignal EndPositionColiderSignal;
+    private void OnEnable()
+    {
+        EndPositionColiderSignal.onPlayerEnterEndPosition += LitleNewBlock;
+        EndPositionColiderSignal.onPlayerExitedEndPosition +=Destroy;
+    }
+    private void LitleNewBlock()
+    {
+        var newLevelBlockCopy = Instantiate(LevelBlockPrefab[0]);
+        newLevelBlockCopy.transform.position = endPosition.position;
+    }
+    private void Destroy()
+    {
+
+    }
 
 }
