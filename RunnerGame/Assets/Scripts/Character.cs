@@ -1,22 +1,14 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Character : MonoBehaviour
 {
-    public string Name;
-    public bool isFinished;
-
-    [SerializeField] private float forwardSpeed;
-
-    [SerializeField] private float sideSpeed;
-
-    private bool isJjumping;
+    [SerializeField] private float _forwardSpeed;
+    [SerializeField] private float _speedSpeed;
 
     private void Update()
     {
-       Scale();
-       
         Run();
 
         if (Input.GetKey(KeyCode.D) == true)
@@ -28,56 +20,31 @@ public class Character : MonoBehaviour
             transform.position = GetSidePosition(-1);
         }
 
-        bool isSpaceCicked = Input.GetKeyUp(KeyCode.Space);
-
-        if (isSpaceCicked == true)
+        if (CanBoost() == true)
         {
             Boost(2);
         }
     }
 
-    private void Boost(float multiplier)
+    public void Boost(float multiplier)
     {
-        forwardSpeed = forwardSpeed * multiplier;
-    }
-
-    private void Jump()
-    {
-        isJjumping = true;
+        _forwardSpeed = _forwardSpeed * multiplier;
     }
 
     private void Run()
     {
-        transform.position = GetNextPosition(forwardSpeed);
+        transform.position = GetNextPosition(_forwardSpeed);
     }
+
     private Vector3 GetNextPosition(float stepLenth)
     {
-        Vector3 nemPosition = new Vector3();
-        nemPosition.x = transform.position.x;
-        nemPosition.y = transform.position.y;
-        nemPosition.z = transform.position.z + stepLenth;
+        Vector3 newPosition = new Vector3();
 
-        return nemPosition;
-    }
+        newPosition.x = transform.position.x;
+        newPosition.y = transform.position.y;
+        newPosition.z = transform.position.z + stepLenth;
 
-    private int GetSum(int firstNumber, int secondNumber)
-    {
-        int sum = 0;
-
-        sum = firstNumber + secondNumber;
-
-        return sum;
-    }
-
-    private float ÆàðûìûíÁåð(int number)
-
-    {
-        float sum = 5;
-
-        sum = number / 2;
-
-
-        return sum;
+        return newPosition;
     }
 
     private bool CanBoost()
@@ -87,35 +54,30 @@ public class Character : MonoBehaviour
 
     private Vector3 GetSidePosition(int sideDirection)
     {
-        Vector3 nemPosition = new Vector3();
-        nemPosition.x = transform.position.x + sideDirection * sideSpeed;
-        nemPosition.y = transform.position.y;
-        nemPosition.z = transform.position.z;
+        Vector3 newPosition = new Vector3();
 
-        return nemPosition;
+        newPosition.x = transform.position.x + (sideDirection * _speedSpeed);
+        newPosition.y = transform.position.y;
+        newPosition.z = transform.position.z;
+
+        return newPosition;
     }
+
     private void Scale()
     {
-       
-   
-        
-        if(Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            transform.DOScale(Vector3.one*1, 1f);
+            transform.DOScale(Vector3.one * 1, 1f);
         }
-    else if(Input.GetKeyUp(KeyCode.Alpha2))
+        else if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            transform.DOScale(Vector3.one*2, 1f);
+            transform.DOScale(Vector3.one * 2, 1f);
         }
-   
-    else if (Input.GetKeyUp(KeyCode.Alpha3))
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
         {
-            transform.DOScale(Vector3.one*3, 1f);
+            transform.DOScale(Vector3.one * 3, 1f);
         }
-            
-     }
-
-
+    }
 }
 
 

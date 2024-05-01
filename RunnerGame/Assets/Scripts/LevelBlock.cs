@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelBlock : MonoBehaviour
@@ -13,16 +11,22 @@ public class LevelBlock : MonoBehaviour
     private void OnEnable()
     {
         EndPositionColiderSignal.onPlayerEnterEndPosition += LitleNewBlock;
-        EndPositionColiderSignal.onPlayerExitedEndPosition +=Destroy;
+        EndPositionColiderSignal.onPlayerExitedEndPosition += DeleteSelf;
     }
+    private void OnDisable()
+    {
+        EndPositionColiderSignal.onPlayerEnterEndPosition -= LitleNewBlock;
+        EndPositionColiderSignal.onPlayerExitedEndPosition -= DeleteSelf;
+    }
+
     private void LitleNewBlock()
     {
         var newLevelBlockCopy = Instantiate(LevelBlockPrefab[0]);
         newLevelBlockCopy.transform.position = endPosition.position;
     }
-    private void Destroy()
+    private void DeleteSelf()
     {
-
+        Destroy(gameObject);
     }
 
 }
