@@ -12,15 +12,17 @@ public class GameController : MonoBehaviour
     public Character characterPrefabs;
 
     private List<LevelBlock> currentBlock = new();
+   private Character characterCopy = new();
     private void Start()
     {
         for (int index = 0; index < BlocksCount; index++)
         {
             SpawnBlock();
         }
-        
+      
+
         SpawnBlock();
-        SpawnBlockCopy();
+        SpawnCharacter();
     }
     private void SpawnBlock()
     {
@@ -36,9 +38,15 @@ public class GameController : MonoBehaviour
         currentBlock.Add(levelBlockCopy);
 
     }
-    private void SpawnBlockCopy()
+    private void SpawnCharacter()
     {
-        Character characterCopy = Instantiate(characterPrefabs);
-        characterCopy.gameObject.name = "Player";
+         characterCopy = Instantiate(characterPrefabs);
+       
+        characterCopy.OnCollidedWithWall += StopGame;
+    }
+      
+    private void StopGame()
+    {
+        characterCopy.Stop();
     }
 }

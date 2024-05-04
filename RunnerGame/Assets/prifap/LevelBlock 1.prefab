@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6396852738350701495}
   - component: {fileID: 9035540742902659556}
   - component: {fileID: 511951092658769657}
+  - component: {fileID: 7231314959121413899}
   m_Layer: 0
   m_Name: Wall2
   m_TagString: Untagged
@@ -105,6 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7231314959121413899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900508175830123647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815ab320d41a55a4883e069bdd72aadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2679339966350233832
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +130,7 @@ GameObject:
   - component: {fileID: 1642820463706336736}
   - component: {fileID: 4157138997756614866}
   - component: {fileID: 7983108924448459025}
+  - component: {fileID: 6275279266830562927}
   m_Layer: 0
   m_Name: Wall1
   m_TagString: Untagged
@@ -210,6 +224,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6275279266830562927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679339966350233832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815ab320d41a55a4883e069bdd72aadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3815574585317473469
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +248,7 @@ GameObject:
   - component: {fileID: 7771504984338012553}
   - component: {fileID: 6004516863799889446}
   - component: {fileID: 2173851996803770818}
+  - component: {fileID: 1847662900575986381}
   m_Layer: 0
   m_Name: Wall3
   m_TagString: Untagged
@@ -315,6 +342,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1847662900575986381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815574585317473469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815ab320d41a55a4883e069bdd72aadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5208362656617157229
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,8 +403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {fileID: 487118193392427849}
   endPosition: {fileID: 6311798191838900690}
-  LevelBlockPrefab:
-  - {fileID: 2331594291009868539}
   EndPositionColiderSignal: {fileID: 3176283280623486113}
 --- !u!1 &5406253732410406160
 GameObject:

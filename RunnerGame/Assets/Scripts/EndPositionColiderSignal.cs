@@ -9,14 +9,14 @@ public class EndPositionColiderSignal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.GetComponent<Character>() !=  null)
         {
             onPlayerEnterEndPosition?.Invoke();
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.GetComponent<Character>() != null)
         {
             onPlayerEnterEndPosition.Invoke();
         }
